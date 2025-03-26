@@ -6,8 +6,34 @@
     <ScrollView>
          <VerticalStackLayout Padding="10">
 
-            <Button Text="Agregar Contacto"/>
+            <Button Text="Agregar Contacto" Command="{Binding GoToAddEditViewCommand}"/>
+            <SearchBar Placeholder="Buscar Contacto" />
+             
+            <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="*,*,*">
 
+                <Label Text="Numero de Telefono" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center"  FontAttributes="Bold"/>
+                
+                <Label Text="Nombre" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                
+                <Label Text="Correo" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" FontAttributes="Bold"/>
+            </Grid>
+
+            <Grid RowSpacing="0" RowDefinitions="Auto" ColumnDefinitions="*,*,*" >
+
+                <Label Text="9614-2351" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center"/>
+                <Label Text="Jua Perez" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center"/>
+                <Label Text="JuanPerez@test.com" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center"/>
+                <Grid.GestureRecognizers>
+                    
+                </Grid.GestureRecognizers>
+            </Grid> 
+             
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
