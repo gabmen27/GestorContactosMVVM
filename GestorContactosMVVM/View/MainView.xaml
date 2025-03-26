@@ -5,8 +5,8 @@
              Title="MainView">
     <ScrollView>
          <VerticalStackLayout Padding="10">
-            
-             <Button Text="Agregar Contacto"/>
+
+            <Button Text="Agregar Contacto"/>
 
         </VerticalStackLayout>
     </ScrollView>
