@@ -11,8 +11,9 @@
          <VerticalStackLayout Padding="10" Spacing="10">
 
             <Button Text="Agregar Contacto" Command="{Binding GoToAddEditViewCommand}"/>
-            <SearchBar Placeholder="Buscar Contacto"/>
-             
+            <SearchBar Placeholder="Buscar Contacto" Text="{Binding SearchText, Mode=TwoWay}"/>
+
+
             <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="*,*,*">
 
                 <Label Text="Numero de Telefono" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" 

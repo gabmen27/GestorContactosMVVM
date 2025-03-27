@@ -15,11 +15,18 @@ namespace GestorContactosMVVM.ViewModels
         [ObservableProperty]
         private ObservableCollection<Contact> contactCollection = new ObservableCollection<Contact>();
 
+        [ObservableProperty]
+        private string searchText;
+
+        private List<Contact> _allContacts;
+
         private readonly ContactsDataBase _service;
+
 
         public MainViewModel() {
             _service = new ContactsDataBase();
         }
+
 
         private void Alerta(string Titulo, string Mensaje)
         {
@@ -28,18 +35,48 @@ namespace GestorContactosMVVM.ViewModels
 
         public void GetAll() 
         {
-            var getAll = _service.GetAll();
+            _allContacts = _service.GetAll();
 
-            if (getAll.Count > 0) {
 
+            FilterContacts();
+
+
+        }
+
+        private void FilterContacts()
+        {
+            if (_allContacts == null) return;
+
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
                 ContactCollection.Clear();
-                foreach (var contact in getAll) {
+                foreach (var contact in _allContacts)
+                {
                     ContactCollection.Add(contact);
                 }
             }
+            else
+            {
+    
+                var filteredContacts = _allContacts
+                    .Where(c => !string.IsNullOrEmpty(c.Nombre) &&
+                                c.Nombre.Contains(SearchText, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
 
-          
+                ContactCollection.Clear();
+                foreach (var contact in filteredContacts)
+                {
+                    ContactCollection.Add(contact);
+                }
+            }
         }
+
+      
+        partial void OnSearchTextChanged(string value)
+        {
+            FilterContacts();
+        }
+
 
         [RelayCommand]
         private async Task GoToAddEditView() 
