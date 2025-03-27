@@ -2,12 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GestorContactosMVVM.View.MainView"
+             xmlns:viewmodel="clr-namespace:GestorContactosMVVM.ViewModels"
+              x:DataType="viewmodel:MainViewModel"    
+             xmlns:model="clr-namespace:GestorContactosMVVM.Models"
+             
              Title="MainView">
     <ScrollView>
-         <VerticalStackLayout Padding="10">
+         <VerticalStackLayout Padding="10" Spacing="10">
 
             <Button Text="Agregar Contacto" Command="{Binding GoToAddEditViewCommand}"/>
-            <SearchBar Placeholder="Buscar Contacto" />
+            <SearchBar Placeholder="Buscar Contacto"/>
              
             <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="*,*,*">
 
@@ -21,18 +25,33 @@
                        VerticalTextAlignment="Center" FontAttributes="Bold"/>
             </Grid>
 
-            <Grid RowSpacing="0" RowDefinitions="Auto" ColumnDefinitions="*,*,*" >
+            <CollectionView ItemsSource="{Binding ContactCollection}">
+                
+                <CollectionView.ItemTemplate>
 
-                <Label Text="9614-2351" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" 
-                       VerticalTextAlignment="Center"/>
-                <Label Text="Jua Perez" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" 
-                       VerticalTextAlignment="Center"/>
-                <Label Text="JuanPerez@test.com" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Center" 
-                       VerticalTextAlignment="Center"/>
-                <Grid.GestureRecognizers>
-                    
-                </Grid.GestureRecognizers>
-            </Grid> 
+                    <DataTemplate x:DataType="model:Contact">
+
+                        <Grid RowSpacing="0" RowDefinitions="Auto" ColumnDefinitions="*,*,*" >
+
+                            <Label Text="{Binding NumeroTelefono}" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding Nombre}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding Correo}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Center" 
+                                   VerticalTextAlignment="Center"/>
+
+                            <Grid.GestureRecognizers>
+
+                            </Grid.GestureRecognizers>
+
+                        </Grid>
+                    </DataTemplate>
+                 
+                </CollectionView.ItemTemplate>
+
+
+                </CollectionView>
+              
              
         </VerticalStackLayout>
     </ScrollView>
