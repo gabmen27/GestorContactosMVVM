@@ -107,12 +107,12 @@ namespace GestorContactosMVVM.ViewModels
 
                         if (del > 0)
                         {
-                            Alerta("ELIMINAR Contacto", "Empleado eliminado correctamente.");
+                            Alerta("ELIMINAR Contacto", "Contacto eliminado correctamente.");
                             ContactCollection.Remove(Contact);
                         }
                         else
                         {
-                            Alerta("ELIMINAR Contacto", "No se eliminó el empleado");
+                            Alerta("ELIMINAR Contacto", "No se eliminó el Contacto");
                         }
                     }
                 }
