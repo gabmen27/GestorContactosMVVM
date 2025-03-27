@@ -24,7 +24,7 @@ namespace GestorContactosMVVM.ViewModels
 
 
         public MainViewModel() {
-            _service = new ContactsDataBase();
+             _service = new ContactsDataBase();
         }
 
 
