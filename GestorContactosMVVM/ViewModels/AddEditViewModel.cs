@@ -79,6 +79,11 @@ namespace GestorContactosMVVM.ViewModels
                 Alerta("ERROR", ex.Message);
             }
         }
+
+        internal void GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
             
         

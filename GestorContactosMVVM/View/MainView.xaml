@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GestorContactosMVVM.View.MainView"
              xmlns:viewmodel="clr-namespace:GestorContactosMVVM.ViewModels"
-              x:DataType="viewmodel:MainViewModel"    
+             x:DataType="viewmodel:MainViewModel"    
              xmlns:model="clr-namespace:GestorContactosMVVM.Models"
              
-             Title="MainView">
+             Title="Contact Manager">
     <ScrollView>
          <VerticalStackLayout Padding="10" Spacing="10">
 
@@ -41,7 +41,7 @@
                                    VerticalTextAlignment="Center"/>
 
                             <Grid.GestureRecognizers>
-
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=SelectContactCommand}" CommandParameter="{Binding .}" />
                             </Grid.GestureRecognizers>
 
                         </Grid>

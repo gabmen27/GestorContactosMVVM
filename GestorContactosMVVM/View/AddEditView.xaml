@@ -2,19 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GestorContactosMVVM.View.AddEditView"
-            
+             xmlns:viewModel="clr-namespace:GestorContactosMVVM.ViewModels"
+             x:DataType="viewModel:AddEditViewModel"
              Title="Agregar/Editar Contacto">
+    
     <VerticalStackLayout Padding="30" Spacing="5">
 
         <Label Text="Numero de telefono:"/>
-        <Entry Text="" Placeholder="Ingrese Numero Telefono" Keyboard="Text"/>
+        <Entry Text="{Binding NumeroTelefono}" Placeholder="Ingrese Numero Telefono" Keyboard="Text"/>
 
         <Label Text="Nombre/Apellido:"/>
-        <Entry Text="" Placeholder="Nombre Apellido" Keyboard="Text"/>
+        <Entry Text="{Binding Nombre}" Placeholder="Nombre Apellido" Keyboard="Text"/>
 
         <Label Text="Correo electronico:"/>
-        <Entry Text="" Placeholder="Correo electronico" Keyboard="Email"/>
+        <Entry Text="{Binding Correo}" Placeholder="Correo electronico" Keyboard="Email"/>
 
-        <Button Text="Guardar" Background="Green"/>
+        <Button Text="Guardar" Background="Green" Command="{Binding AddUpdateCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
