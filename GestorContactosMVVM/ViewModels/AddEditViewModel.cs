@@ -7,7 +7,7 @@ using Contact = GestorContactosMVVM.Models.Contact;
 
 namespace GestorContactosMVVM.ViewModels
 {
-    class AddEditViewModel : ObservableObject
+    partial class AddEditViewModel : ObservableObject
     {
         [ObservableProperty]
         private int id;
@@ -29,10 +29,10 @@ namespace GestorContactosMVVM.ViewModels
         }
 
         public AddEditViewModel(Contact Contact) {
-            id = Contact.Id;
-            nombre = Contact.Nombre;
-            correo = Contact.Correo;
-            numeroTelefono = Contact.NumeroTelefono;
+            Id = Contact.Id;
+            Nombre = Contact.Nombre;
+            Correo = Contact.Correo;
+            NumeroTelefono = Contact.NumeroTelefono;
 
         
         }
@@ -43,8 +43,43 @@ namespace GestorContactosMVVM.ViewModels
         }
 
         [RelayCommand]
+
         private async Task AddUpdate()
-        { }
+        {
+            try
+            {
+
+                Contact Contact = new Contact
+                {
+                    Id = Id,
+                    Nombre = Nombre,
+                   NumeroTelefono = NumeroTelefono,
+                    Correo = Correo,
+                };
+
+                if (Contact.Nombre is null || Contact.Nombre == "")
+                {
+                    Alerta("ADVERTENCIA", "Ingrese el nombre completo");
+                }
+                else
+                {
+                    if (Id == 0)
+                    {
+                        _service.Insert(Contact);
+                    }
+                    else
+                    {
+                        _service.Update(Contact);
+                    }
+                    await App.Current!.MainPage!.Navigation.PopAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                Alerta("ERROR", ex.Message);
+            }
+        }
+    }
             
         
 }
