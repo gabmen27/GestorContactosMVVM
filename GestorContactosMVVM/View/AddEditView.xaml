@@ -7,8 +7,9 @@
              Title="Agregar/Editar Contacto">
     
     <VerticalStackLayout Padding="30" Spacing="5">
-    
-        
+
+        <Image Source="icono.png" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
+
         <Label Text="Numero de telefono:"/>
         <Entry Text="{Binding NumeroTelefono}" Placeholder="Ingrese Numero Telefono" Keyboard="Text"/>
 
