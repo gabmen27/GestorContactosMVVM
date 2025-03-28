@@ -7,11 +7,12 @@
              Title="Agregar/Editar Contacto">
     
     <VerticalStackLayout Padding="30" Spacing="5">
-
+    
+        
         <Label Text="Numero de telefono:"/>
         <Entry Text="{Binding NumeroTelefono}" Placeholder="Ingrese Numero Telefono" Keyboard="Text"/>
 
-        <Label Text="Nombre/Apellido:"/>
+        <Label Text="Nombre/Apellido:"/> 
         <Entry Text="{Binding Nombre}" Placeholder="Nombre Apellido" Keyboard="Text"/>
 
         <Label Text="Correo electronico:"/>
